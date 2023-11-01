@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title }} - Askama Axum {% endblock %}</title>
+    {% block meta %}{% endblock %}
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body> 
+    <div id="root" class="flex flex-col">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

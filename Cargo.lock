@@ -46,20 +46,17 @@ dependencies = [
  "humansize",
  "num-traits",
  "percent-encoding",
- "serde",
 ]
 
 [[package]]
-name = "askama-axum"
-version = "0.1.0"
+name = "askama_axum"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "07b336dea26a2eb67f04e1134385721f794b654a870ce5146d2fcb69ea39c3a4"
 dependencies = [
  "askama",
- "axum",
- "hyper",
- "include_dir",
- "serde",
- "tokio",
- "tokio-util",
+ "axum-core",
+ "http",
 ]
 
 [[package]]
@@ -878,6 +875,20 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c06d3da6113f116aaee68e4d601191614c9053067f9ab7f6edbcb161237daa54"
 dependencies = [
  "once_cell",
+]
+
+[[package]]
+name = "try-askama-axum"
+version = "0.1.0"
+dependencies = [
+ "askama",
+ "askama_axum",
+ "axum",
+ "hyper",
+ "include_dir",
+ "serde",
+ "tokio",
+ "tokio-util",
 ]
 
 [[package]]

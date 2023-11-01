@@ -1,11 +1,12 @@
-use askama_axum::assets;
-use axum::{response::Html, routing::get, Router};
+use askama::Template;
+use axum::{routing::get, Router};
+use try_askama_axum::assets;
 
 #[tokio::main]
 async fn main() {
     let app = Router::new()
-        .route("/", get(hello_world))
-        .nest("/assets", assets::router());
+        .nest("/assets", assets::router())
+        .route("/", get(home));
 
     println!("Listening on 0.0.0.0:4000");
     axum::Server::bind(&"0.0.0.0:4000".parse().unwrap())
@@ -14,6 +15,13 @@ async fn main() {
         .unwrap();
 }
 
-async fn hello_world() -> Html<&'static str> {
-    return Html("<h1>Hello world</h1>");
+#[derive(Template)]
+#[template(path = "home.html")]
+struct HomeTemplate<'a> {
+    name: &'a str,
+}
+
+async fn home() -> HomeTemplate<'static> {
+    let home = HomeTemplate { name: "Jacob" };
+    return home;
 }
